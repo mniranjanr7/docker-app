@@ -26,4 +26,4 @@ jobs:
         with:
           context: ./dockerimages
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/npm-docker:latest
+          tags: mniranjanr7/npm-docker:latest
