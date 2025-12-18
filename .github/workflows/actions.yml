@@ -1,0 +1,23 @@
+name: DockerPushBuild
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+jobs:
+  docker-buld-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+        #2. Set up QEMU (Optional, but good for multi-platform builds)
+      - name: setup QEMU
+        uses: docker/setup-qemu-action@v2
+        #3 Setup docker build 
+      - name: setup image build
+        uses: docker/setup-build-action@v2
+        #4 Login to docker 
+      - name: Login to docker hub
+        uses: docker/login-action@v2
+        with:
+          username: {{ secrets.DOCKER_USERNAME }}
+          password: {{ secrets.DOCKER_PASSWORD }}
