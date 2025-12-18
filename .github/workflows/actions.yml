@@ -26,4 +26,4 @@ jobs:
         with:
           context: ./dockerimages
           push: true
-          tags: mniranjanr7/npm-docker:v1
+          tags: mniranjanr7/npm-docker:v2
