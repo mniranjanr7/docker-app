@@ -1,4 +1,4 @@
-name: DockerPushBuild
+name: DockerBuildImage
 on:
   workflow_dispatch:
   push:
