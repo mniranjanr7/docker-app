@@ -4,26 +4,12 @@ on:
   push:
     branches: ["main"]
 jobs:
-  docker-buld-push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout repository
-        uses: actions/checkout@v3
-        #2. Set up QEMU (Optional, but good for multi-platform builds)
-      - name: setup QEMU
-        uses: docker/setup-qemu-action@v2
-        #3 Setup docker build
-      - name: setup image buildx
-        uses: docker/setup-buildx-action@v2
-        #4 Login to docker
-      - name: Login to docker hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: build the image
-        uses: docker/build-push-action@v4
-        with:
-          context: ./dockerimages
-          push: true
-          tags: mniranjanr7/npm-docker:v2
+  call_docker_build_teamplate:
+    uses: github.com/mniranjanr7/DockerBuildTemplate/blob/main/.github/workflows/actions.yml@main
+    with:
+      image-name: mniranjanr7/node
+      tag-name: ${{github.sha}}
+      docker-build-context: dockerimages
+    secrets:
+      DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
