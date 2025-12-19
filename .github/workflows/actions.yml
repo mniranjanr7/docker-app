@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 jobs:
   call_docker_build_teamplate:
-    uses: github.com/mniranjanr7/DockerBuildTemplate/.github/workflows/actions.yml@main
+    uses: mniranjanr7/DockerBuildTemplate/.github/workflows/actions.yml@main
     with:
       image-name: mniranjanr7/node
       tag-name: ${{github.sha}}
